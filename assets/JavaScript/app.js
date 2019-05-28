@@ -6,7 +6,7 @@ var danceMoves = ["The Hustle", "Dab", "The Cat Daddy", "The Floss", "The Robot"
 console.log(danceMoves.length);
 
 /* queryURL for Giphy API */
-var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC";
+var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=g0AzH16XHsMCcQY7krnPL8aac12JbfXJ";
 
 $.ajax({
   url: queryURL,
