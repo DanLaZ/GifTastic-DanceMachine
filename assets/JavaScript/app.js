@@ -30,45 +30,44 @@ function displayGif(){
 
         for (var i = 0; i < dataArrayNum.length; i++) {
             
+            var gifImg = $("<img>");
+            gifImg.addClass("gif");
+            gifImg.attr("src", dataArrayNum[i].images.downsized_large.url);
 
-            
-            $("<img>").addClass("gif");
-            $("<img>").attr("src", dataArrayNum[i].images.downsized_large.url);
-
-            $("#gifDump").append($("<p>").text(dance));
-
-            $("#gifDump").append($("<p>").text("Rating: " + dataArrayNum[i].rating.toUpperCase()));
-
-            $("#gifDump").append($("<img>").attr("src", dataArrayNum[i].images.downsized_large.url));
+            var gifDisplay = $("#gifDump");
+            gifDisplay.addClass("gifText");
+            gifDisplay.append($("<p>").text(dance));
+            gifDisplay.append($("<p>").text("Rating: " + dataArrayNum[i].rating.toUpperCase()));
+            gifDisplay.append($("<img>").attr("src", dataArrayNum[i].images.downsized_large.url));
 
         }
-
-        
-    
-
-
-
-
-
     });
-
-
 
 }
 
 /* Create Buttons */
-
 function loadButtons(){
 
     $("#buttons").empty();
     for (var i = 0; i < danceMoves.length; i++) {
         var danceButtons = $("<button>");
-        danceButtons.addClass("dance");
+        danceButtons.addClass("danceButton");
         danceButtons.attr("data-name", danceMoves[i]);
         danceButtons.text(danceMoves[i]);
         $("#buttons").append(danceButtons);
     }
 }
+
+/* Form Button Logic */
+$("#addButton").on("click", function(event) {
+
+    event.preventDefault();
+    var addedDance = $("#newDance").val().trim();
+    danceMoves.push(addedDance);
+    loadButtons();
+});
+
+
 
 $(document).on("click", ".dance", displayGif);
 
