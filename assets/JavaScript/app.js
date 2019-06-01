@@ -1,7 +1,7 @@
 
-/* Variables */
+/* Dance Array */
 
-var danceMoves = ["The Hustle", "Dab", "The Cat Daddy", "The Floss", "The Robot", "The Electric Slide", "The Stomp", "The Milly Rock", "The Running Man", "The MC Hammer", "The Shuffle", "Hit Dem Folk", "Shoot", "Vogue", "The Moonwalk", "The Dougie", "The Twist", "The Carlton", "Sangria Wine", "Daggering", "Dutty Wine", "The Harlem Shake", "The Macarena"];
+var danceMoves = ["The Hustle", "Dab", "The Cat Daddy", "The Floss", "The Robot", "The Electric Slide", "The Stomp", "The Milly Rock", "The Running Man", "The MC Hammer", "The Shuffle", "Hit Dem Folks", "Shoot", "Vogue", "The Moonwalk", "The Dougie", "The Twist", "The Carlton", "Sangria Wine", "Daggering", "Dutty Wine", "The Harlem Shake", "The Macarena"];
 
 console.log(danceMoves.length);
 
@@ -35,9 +35,11 @@ function displayGif(){
             gifImg.attr("src", dataArrayNum[i].images.downsized_large.url);
 
             var gifDisplay = $("#gifDump");
-            gifDisplay.addClass("gifText");
-            gifDisplay.append($("<p>").text(dance));
-            gifDisplay.append($("<p>").text("Rating: " + dataArrayNum[i].rating.toUpperCase()));
+            var danceHeader = $("<p>");
+            var ratingHeader = $("<p>"); 
+
+            gifDisplay.append(danceHeader.text(dance).addClass("danceHeader"));
+            gifDisplay.append(ratingHeader.text("Rating: " + dataArrayNum[i].rating.toUpperCase()).addClass("ratingHeader"));
             gifDisplay.append($("<img>").attr("src", dataArrayNum[i].images.downsized_large.url));
 
         }
@@ -69,6 +71,6 @@ $("#addButton").on("click", function(event) {
 
 
 
-$(document).on("click", ".dance", displayGif);
+$(document).on("click", ".danceButton", displayGif);
 
 loadButtons();
